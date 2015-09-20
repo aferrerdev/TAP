@@ -3,8 +3,8 @@
  */
 public class SaveAccount extends Account
 {
-    public SaveAccount(String ID, Customer customer) {
-        super(ID, customer);
+    public SaveAccount(String ID, Customer customer, double startMoney) {
+        super(ID, customer,startMoney);
         this.setInterest_rate(0.2);
     }
     @Override

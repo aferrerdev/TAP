@@ -31,7 +31,8 @@ public class Bank
         {
             Random random = new Random();
             int num = random.nextInt(max);
-            accounts.get(num).setBalance(300);
+            Account winner = accounts.get(num);
+            winner.depositMoney(300);
             return accounts.get(num);
         }
         else

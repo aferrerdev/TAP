@@ -3,8 +3,8 @@
  */
 public class BonusAccount extends Account
 {
-    public BonusAccount(String ID, Customer customer) {
-        super(ID, customer);
+    public BonusAccount(String ID, Customer customer, double startMoney) {
+        super(ID, customer,startMoney);
         this.setInterest_rate(0.6);
     }
     @Override

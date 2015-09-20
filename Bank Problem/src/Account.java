@@ -9,10 +9,10 @@ public abstract class Account
     protected double balance;
     protected double interest_rate;
 
-    public Account(String ID, Customer customer) {
+    public Account(String ID, Customer customer, double startMoney) {
         this.ID = ID;
         this.customer = customer;
-        this.balance = 0;
+        this.balance = startMoney;
     }
     public void depositMoney(double moneyToDeposit)
     {
