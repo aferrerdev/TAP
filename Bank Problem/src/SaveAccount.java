@@ -3,12 +3,10 @@
  */
 public class SaveAccount extends Account
 {
-    public SaveAccount()
-    {
-        super();
+    public SaveAccount(String ID, Customer customer) {
+        super(ID, customer);
         this.setInterest_rate(0.2);
     }
-
     @Override
     public double retrieveMoney(double money) throws Exception {
         if(balance > 0 && balance-money > 0)

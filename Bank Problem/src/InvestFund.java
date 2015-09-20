@@ -3,9 +3,8 @@
  */
 public class InvestFund extends Account
 {
-    public InvestFund()
-    {
-        super();
+    public InvestFund(String ID, Customer customer) {
+        super(ID, customer);
         this.setInterest_rate(0.34);
     }
     @Override

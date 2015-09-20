@@ -3,9 +3,8 @@
  */
 public class CheckingAccount extends Account
 {
-    public CheckingAccount()
-    {
-        super();
+    public CheckingAccount(String ID, Customer customer) {
+        super(ID, customer);
         this.setInterest_rate(0.1);
         this.setAccout_comission(0);
     }
