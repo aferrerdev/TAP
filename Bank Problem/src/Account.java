@@ -3,32 +3,24 @@
  */
 public abstract class Account
 {
-    private String ID;
-    private Customer customer;
-    private double accout_comission;
-    private double balance;
-    private double interest_rate;
+    protected String ID;
+    protected Customer customer;
+    protected double accout_comission;
+    protected double balance;
+    protected double interest_rate;
 
-    private void depositMoney(double moneyToDeposit)
+    public void depositMoney(double moneyToDeposit)
     {
         this.balance = this.balance + moneyToDeposit;
     }
-    private double withdrawMoney(double money) throws Exception {
-        if(balance > 0 && balance-money > 0)
-        {
-            balance = balance-money;
-            return balance;
-        }
-        else
-            throw new Exception("Not enought money!");
-    }
-    private double checkBalance(){
+    public abstract double retrieveMoney(double money) throws Exception;
+    public double checkBalance(){
         return balance;
     }
-    private void changeClient(Customer client){
+    public void changeClient(Customer client){
         this.customer = client;
     }
-    private void monthlyRevision()
+    public void monthlyRevision()
     {
         balance = balance + balance * interest_rate - accout_comission;
     }
