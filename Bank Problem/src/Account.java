@@ -9,6 +9,11 @@ public abstract class Account
     protected double balance;
     protected double interest_rate;
 
+    public Account(String ID, Customer customer) {
+        this.ID = ID;
+        this.customer = customer;
+        this.balance = 0;
+    }
     public void depositMoney(double moneyToDeposit)
     {
         this.balance = this.balance + moneyToDeposit;
@@ -53,4 +58,14 @@ public abstract class Account
         this.interest_rate = interest_rate;
     }
 
+    @Override
+    public String toString() {
+        return "Account{" +
+                "ID='" + ID + '\'' +
+                ", customer=" + customer +
+                ", accout_comission=" + accout_comission +
+                ", balance=" + balance +
+                ", interest_rate=" + interest_rate +
+                '}';
+    }
 }

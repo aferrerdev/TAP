@@ -25,8 +25,7 @@ public class Bank
     {
         accounts.add(account);
     }
-    public Account lottery() throws Exception
-    {
+    public Account lottery() throws Exception {
         int max = accounts.size();
         if(max > 0)
         {
@@ -37,5 +36,11 @@ public class Bank
         }
         else
             throw new Exception("Empty accounts list in bank.");
+    }
+    public ArrayList<Account> getAccounts() {
+        return accounts;
+    }
+    public ArrayList<Customer> getCustomers() {
+        return customers;
     }
 }
