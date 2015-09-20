@@ -18,7 +18,15 @@ public abstract class Account
     {
         this.balance = this.balance + moneyToDeposit;
     }
-    public abstract double retrieveMoney(double money) throws Exception;
+    public double retrieveMoney(double money) throws Exception {
+        if(balance > 0 && balance-money > 0)
+        {
+            balance = balance-money;
+            return balance;
+        }
+        else
+            throw new Exception("Not enought money!");
+    }
     public double checkBalance(){
         return balance;
     }

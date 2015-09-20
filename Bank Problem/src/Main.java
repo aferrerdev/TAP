@@ -17,14 +17,14 @@ public class Main
         bank.addCustomer(adria);
         bank.addCustomer(jon);
         bank.addCustomer(adria);
-        showCustomers(bank);
+        bank.showCustomers();
 
         // Creating Bank Accounts.
         bank.addAccount(new InvestFund("1",alex,5000));
         bank.addAccount(new CheckingAccount("2",adria,2000));
         bank.addAccount(new BonusAccount("3", adria, 3000));
         bank.addAccount(new SaveAccount("4", javi, 6000));
-        showAccounts(bank);
+        bank.showAccounts();
 
         try
         {
@@ -36,25 +36,9 @@ public class Main
             // If account list in bank is empty will show an Exception.
             System.out.println(e.getMessage());
         }
+
+        System.out.println("\nRevision:");
+        bank.revision();
+        bank.showAccounts();
     }
-    /**
-     * Show customer information using toString method.
-     * @param bank
-     */
-    public static void showCustomers(Bank bank) {
-         ArrayList<Customer> customers = bank.getCustomers();
-         System.out.println("\nBank Customers:");
-         for(Customer client: customers)
-         {
-             System.out.println(client.toString());
-         }
-    }
-    public static void showAccounts(Bank bank) {
-    ArrayList<Account> accounts = bank.getAccounts();
-    System.out.println("\nBank Accounts:");
-    for(Account account: accounts)
-    {
-        System.out.println(account.toString());
-    }
-}
 }
