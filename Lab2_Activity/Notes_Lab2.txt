@@ -1,0 +1,5 @@
+- Contracte: defineix uns metodes.
+- Asignació Polimorfica: per exemple asignació de parametre, es on esperem al contracte o que es cumpleixi.
+- Dynamic Binding: es quan es crida un metode de la classe pare al metode de la classe filla. Exemple function.apply() Map.java
+- Objectiu Polimorfisme reutilitzacio de codi. Reuse/Generic Code. Per exemple el Map.java es una funció una sola vegada escrita i que es reutilitza.
+Exemple 2: El codi del sort().
