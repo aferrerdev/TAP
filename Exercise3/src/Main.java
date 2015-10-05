@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.StringTokenizer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Main {
 
@@ -15,18 +17,37 @@ public class Main {
         FileReader fis = new FileReader("accounts.txt");
         BufferedReader dis = new BufferedReader(fis);
         String line;
-        while ((line = dis.readLine()) != null) {
-            System.out.println("Account: ------------------------------");
+        while ((line = dis.readLine()) != null)
+        {
             StringTokenizer tokens = new StringTokenizer(line, ",");
-            Account a = new Account(Double.parseDouble(tokens.nextToken()),tokens.nextToken(),tokens.nextToken(),AccType.valueOf(tokens.nextToken()));
-            accounts.add(a);
+            while (tokens.hasMoreTokens())
+            {
+                Account a = new Account(tokens.nextToken(), tokens.nextToken(), tokens.nextToken(), Double.parseDouble(tokens.nextToken()));
+                accounts.add(a);
+            }
+
         }
         dis.close();
 
         // Use stream.map to increment the balance of all accounts in 10 euros
-        List<Account> addaccounts = accounts.stream().map(p -> {p.setBalance(p.getBalance() + 10);});
+        System.out.println("Exercise 1: MAP");
 
+        accounts.stream().map((Account c) -> {
+            c.setBalance(c.getBalance() + 10);
+            return c;
+        });
+        accounts.forEach((Account c) -> System.out.println(c.toString()));
 
+        System.out.println("Exercise 2: FILTER");
+
+        Stream<Account> result = accounts.stream().filter(acc -> acc.getType().equals(AccType.IF));
+        result.forEach(e -> System.out.println(e));
+
+        System.out.println("Exercise 2: MAX");
+
+        Stream<Account> result1 = accounts.stream().filter(acc -> acc.getType().equals(AccType.IF));
+        Account resultacc = result1.max((e1,e2)->Double.compare(e1.getBalance(),e2.getBalance())).get();
+        System.out.println(resultacc);
 
 
 

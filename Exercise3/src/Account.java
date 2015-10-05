@@ -8,11 +8,27 @@ public class Account
     AccType type;
     double balance;
 
-    public Account(double balance, String id, String owner, AccType type) {
+    public Account(String id, String owner, String type, double balance) {
         this.balance = balance;
         this.id = id;
         this.owner = owner;
-        this.type = type;
+
+        // Set type.
+        switch (type)
+        {
+            case "IF":
+                this.type = AccType.IF;
+                break;
+            case "CA":
+                this.type = AccType.CA;
+                break;
+            case "SA":
+                this.type = AccType.SA;
+                break;
+            case "BA":
+                this.type = AccType.BA;
+                break;
+        }
     }
 
     @Override
