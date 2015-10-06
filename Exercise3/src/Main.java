@@ -7,6 +7,7 @@ import java.util.StringTokenizer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+// Exercici Clousures.
 public class Main {
 
     public static void main(String[] args) throws IOException
@@ -29,13 +30,12 @@ public class Main {
         }
         dis.close();
 
-        // Use stream.map to increment the balance of all accounts in 10 euros
+
         System.out.println("Exercise 1: MAP");
 
-        accounts.stream().map((Account c) -> {
-            c.setBalance(c.getBalance() + 10);
-            return c;
-        });
+        // Use stream.map to increment the balance of all accounts in 10 euros
+        List<Account> result0 = accounts.stream().map((Account c) -> { c.setBalance(c.getBalance() + 10); return c;}).collect(Collectors.toList());
+        // Mostrar els canvis.
         accounts.forEach((Account c) -> System.out.println(c.toString()));
 
         System.out.println("Exercise 2: FILTER");
