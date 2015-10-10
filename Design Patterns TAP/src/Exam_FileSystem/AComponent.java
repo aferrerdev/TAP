@@ -21,6 +21,8 @@ public interface AComponent {
     public List<AComponent> toList();
 
     // search(name): It returns a list of files whose name coincides with name in all sub tree of this directory.
-    public List<File> search();
+    public List<File> search(String name);
+
+    public void setParent(AComponent parent);
 
 }

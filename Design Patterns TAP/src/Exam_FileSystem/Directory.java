@@ -1,7 +1,6 @@
 package Exam_FileSystem;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -10,6 +9,7 @@ import java.util.stream.Collectors;
 public class Directory implements AComponent {
     private String name;
     private List<AComponent> children;
+    private AComponent parent = null;
 
 
     public Directory(String name) {
@@ -17,15 +17,18 @@ public class Directory implements AComponent {
         children = new LinkedList<AComponent>();
     }
     public void addChild(AComponent child) {
+        child.setParent(this); // Set child parent
         children.add(child);
-
     }
     public void removeChild(AComponent child){
         children.remove(child);
     }
     @Override
     public String toString() {
-        return "/"+this.name;
+        String path="/";
+        if (parent!=null)
+            path = parent.toString()+ "/";
+        return path + name;
     }
 
     // Implemented methods
@@ -37,23 +40,42 @@ public class Directory implements AComponent {
         return result;
     }
     @Override
-    public List<File> search() {
-        return null;
+    public List<File> search(String name) {
+        List<File> result = new LinkedList<File>();
+        for(AComponent component: children)
+        {
+            result.addAll(component.search(name));
+        }
+        //children.forEach(file -> result.addAll(file.search(name)));
+        return result;
     }
+
+    @Override
+    public void setParent(AComponent parent) {
+        this.parent = parent;
+    }
+
     // collect(): It returns a list of String that contains all names of files and directories that are contained in this directory (include subdirectories).
     @Override
     public List<String> collect() {
-        return null;
+        List<String> result = new LinkedList<String>();
+        result.add(toString());
+        for (AComponent child:children)
+            result.addAll(child.collect());
+        return result;
     }
     @Override
     public void ls() {
         children.forEach((file -> file.ls()));
-        /*
-        for (AComponent child:children)
+        /* for (AComponent child:children)
             child.ls();*/
     }
     @Override
     public List<AComponent> toList() {
-        return null;
+        List<AComponent> result = new LinkedList<AComponent>();
+        result.add(this);
+        for (AComponent child:children)
+            result.addAll(child.toList());
+        return result;
     }
 }

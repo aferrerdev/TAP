@@ -1,5 +1,6 @@
 package Exam_FileSystem;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -8,6 +9,7 @@ import java.util.List;
 public class File implements AComponent {
     private String name;
     private int size;
+    private AComponent parent = null;
 
     public File(String name, int size) {
         this.name = name;
@@ -28,13 +30,16 @@ public class File implements AComponent {
 
     @Override
     public String toString() {
-        return "/"+this.name;
+        String path = parent.toString()+ "/";
+        return path + name;
     }
 
     // Implement methods:
     @Override
     public List<String> collect() {
-        return null;
+        List<String> result = new LinkedList<String>();
+        result.add(toString());
+        return result;
     }
 
     @Override
@@ -49,11 +54,21 @@ public class File implements AComponent {
 
     @Override
     public List<AComponent> toList() {
-        return null;
+        List<AComponent> result = new LinkedList<AComponent>();
+        result.add(this);
+        return result;
     }
 
     @Override
-    public List<File> search() {
-        return null;
+    public List<File> search(String name) {
+        List<File> result = new LinkedList<File>();
+        if (this.name.equals(name))
+            result.add(this);
+        return result;
+    }
+
+    @Override
+    public void setParent(AComponent parent) {
+        this.parent = parent;
     }
 }
