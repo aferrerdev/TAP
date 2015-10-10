@@ -16,9 +16,15 @@ public class Directory implements AComponent {
         this.name = name;
         children = new LinkedList<AComponent>();
     }
-    public void addChild(AComponent child) {
-        child.setParent(this); // Set child parent
-        children.add(child);
+    public void addChild(AComponent child) throws FileExistsException{
+        List<File> files = search(child.getName());
+        if(files.size() == 0){
+            child.setParent(this); // Set child parent
+            children.add(child);
+        }
+        else
+            throw new FileExistsException();
+
     }
     public void removeChild(AComponent child){
         children.remove(child);
@@ -29,6 +35,11 @@ public class Directory implements AComponent {
         if (parent!=null)
             path = parent.toString()+ "/";
         return path + name;
+    }
+
+    @Override
+    public String getName() {
+        return this.name;
     }
 
     // Implemented methods

@@ -1,5 +1,6 @@
 package Exam_FileSystem;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -16,11 +17,18 @@ public class Main {
         File c = new File("c.txt",10);
 
         // Afegim fills al directory pare home
-        home.addChild(a);
-        home.addChild(b);
-        home.addChild(tmp);
-        tmp.addChild(c);
-
+        try
+        {
+            home.addChild(a);
+            //home.addChild(a); Test Error
+            home.addChild(b);
+            home.addChild(tmp);
+            tmp.addChild(c);
+        }
+        catch (FileExistsException e)
+        {
+            System.out.println(e.getMessage());
+        }
         System.out.println("Exercise 1: ls():");
         home.ls();
 
@@ -30,6 +38,7 @@ public class Main {
 
         System.out.println("\nExercise 3: toList():");
         List<AComponent> listA = home.toList();
+        Collections.sort(listA, (AComponent comp1, AComponent comp2) -> comp1.getName().compareTo(comp2.getName()));
         listA.forEach(component -> System.out.println(component.toString()));
 
         System.out.println("\nExercise 4: search():");

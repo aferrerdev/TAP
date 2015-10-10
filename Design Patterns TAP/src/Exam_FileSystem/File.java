@@ -15,9 +15,6 @@ public class File implements AComponent {
         this.name = name;
         this.size = size;
     }
-    public String getName() {
-        return name;
-    }
     public void setName(String name) {
         this.name = name;
     }
@@ -27,13 +24,15 @@ public class File implements AComponent {
     public void setSize(int size) {
         this.size = size;
     }
-
     @Override
     public String toString() {
         String path = parent.toString()+ "/";
         return path + name;
     }
-
+    @Override
+    public String getName() {
+        return this.name;
+    }
     // Implement methods:
     @Override
     public List<String> collect() {

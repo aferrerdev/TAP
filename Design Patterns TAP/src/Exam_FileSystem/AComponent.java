@@ -8,6 +8,9 @@ import java.util.List;
  */
 public interface AComponent {
 
+    // get Component Name.
+    public String getName();
+
     // size(): It returns the  total size  of all files  contained in this directory (include subdirectories).
     public int size();
 
