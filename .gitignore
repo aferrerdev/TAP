@@ -1,4 +1,3 @@
-*.class
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
@@ -9,9 +8,11 @@
 # if you remove the above rule, at least ignore the following:
 
 # User-specific stuff:
+*/.idea/.name
 */.idea/workspace.xml
 */.idea/tasks.xml
 */.idea/dictionaries
+*/out
 workspace.xml
 tasks.xml
 dictionaries

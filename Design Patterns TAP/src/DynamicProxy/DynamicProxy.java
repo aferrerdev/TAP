@@ -31,10 +31,10 @@ public class DynamicProxy implements InvocationHandler
         Object invocationResult = null;
         try
         {
-            System.out.println("Before method " + method.getName());
+            System.out.println("Before method " + method.getName()+"("+args[0]+")");
             invocationResult = method.invoke(this.target, args);
             System.out.println("Result:"+invocationResult);
-            System.out.println("After method " + method.getName());
+            System.out.println("After method " + method.getName()+"("+args[0].toString()+")");
         }
         catch(InvocationTargetException ite)
         {
