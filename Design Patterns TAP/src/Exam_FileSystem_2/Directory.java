@@ -1,7 +1,6 @@
-package Exam_FileSystem;
+package Exam_FileSystem_2;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Alex on 06/10/2015.

@@ -1,5 +1,4 @@
-package Exam_FileSystem;
-
+package Exam_FileSystem_2;
 import Exam_FileSystem_2.AComponent;
 import Exam_FileSystem_2.Directory;
 import Exam_FileSystem_2.File;
@@ -52,3 +51,4 @@ public class Main {
         list_search.forEach(component -> System.out.println("Found "+list_search.size()+" file: "+component.toString()));
     }
 }
+

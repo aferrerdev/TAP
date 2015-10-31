@@ -1,0 +1,47 @@
+--------------
+
+2. FileSystem combining composite and visitor
+
+The problem of the previous solution (Exam_FileSystem) is that every new operation that we want to apply to the entire tree must be added to the parent interface AComponent.
+This reminds us the classical Fragile Base Class problem of modifying parent classes in OOP.
+To solve this problem and enable adding new operations in a flexible way, combine the Visitor and Composite patterns. Since every node in the structure can be visited,
+we will be able to add any operation very easily using Visitors.
+Convert all operations [1-6] to Visitors and demonstrate them.
+
+Previous Exercise.
+1. FILESYSTEM
+ ---------------------------------
+
+   Based on the Composite pattern we will implement a basic file system supporting files and directories.
+   Every directory has a name and it can contain N files and N directories.
+   Every file has name and size.
+
+   You have to implement the following operations:
+
+   1. ls()
+   If we perform ls() over one directory, it will print the name of all files and directories that it contains.
+
+   2. collect(): It returns a list of String that contains all names of files and directories that are contained in this directory (include subdirectories).
+
+   3. toList(): It returns one list of all components (can be files or directories) that are contained in this directory (include subdirectories).
+
+   4. size(): It returns the  total size  of all files  contained in this directory (include subdirectories).
+
+   5. search(name): It returns a list of files whose name coincides with name in all sub tree of this directory.
+
+   6. toString(): Redefine toString method of files and directories in order to print on screen the entire path of every file and directory.
+
+   Ex: /home/lp/c.txt or /home/lp
+
+   Example:
+   In a main program create this structure of directories:
+
+   /home/
+   	  a.txt
+    	  b.txt
+   	  /lp/
+   	      c.txt
+   /tmp/
+         a.txt
+   Check the six functions. You have to use parametric polymorphism in your code when it is possible.
+
