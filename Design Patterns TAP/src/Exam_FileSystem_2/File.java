@@ -15,59 +15,61 @@ public class File implements AComponent {
         this.name = name;
         this.size = size;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public int getSize() {
         return size;
     }
+
     public void setSize(int size) {
         this.size = size;
     }
-    @Override
-    public String toString() {
-        String path = parent.toString()+ "/";
-        return path + name;
+
+    public AComponent getParent() {
+        return parent;
     }
+
     @Override
     public String getName() {
         return this.name;
-    }
-    // Implement methods:
-    @Override
-    public List<String> collect() {
-        List<String> result = new LinkedList<String>();
-        result.add(toString());
-        return result;
-    }
-
-    @Override
-    public int size() {
-        return 0;
-    }
-
-    @Override
-    public void ls() {
-        System.out.println(this.toString());
-    }
-
-    @Override
-    public List<AComponent> toList() {
-        List<AComponent> result = new LinkedList<AComponent>();
-        result.add(this);
-        return result;
-    }
-
-    @Override
-    public List<File> search(String name) {
-        List<File> result = new LinkedList<File>();
-        if (this.name.equals(name))
-            result.add(this);
-        return result;
     }
 
     @Override
     public void setParent(AComponent parent) {
         this.parent = parent;
+    }
+
+    // =================================================================================================================
+    // Implemented methods
+    public void accept_ls(Visitorls visitor, VisitorToString vToString) {
+        visitor.ls(this,vToString);
+    }
+
+    @Override
+    public List<String> accept_collect(VisitorCollect visitor, VisitorToString vToString) {
+        return visitor.collect(this,vToString);
+    }
+
+    @Override
+    public int accept_size(VisitorSize visitor) {
+        return visitor.size(this);
+    }
+
+    @Override
+    public List<AComponent> accept_toList(VisitorToList visitor) {
+        return visitor.toList(this);
+    }
+
+    @Override
+    public List<File> accept_search(VisitorSearch visitor, String name) {
+        return visitor.search(this,name);
+    }
+
+    @Override
+    public String toString(VisitorToString visitor) {
+        return visitor.toString(this);
     }
 }

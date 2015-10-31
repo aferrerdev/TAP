@@ -1,9 +1,9 @@
 package Exam_FileSystem;
 
-import Exam_FileSystem_2.AComponent;
-import Exam_FileSystem_2.Directory;
-import Exam_FileSystem_2.File;
-import Exam_FileSystem_2.FileExistsException;
+import Exam_FileSystem.AComponent;
+import Exam_FileSystem.Directory;
+import Exam_FileSystem.File;
+import Exam_FileSystem.FileExistsException;
 
 import java.util.Collections;
 import java.util.List;
