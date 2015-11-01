@@ -27,7 +27,7 @@ public class MemberWithChild extends FamilyMember {
     public String presentar() {
         String presentarse = this.toString()+"\n\t Els meus fills son:";
         for (FamilyMember child : children) {
-            presentarse = presentarse + "\n\t"+child.presentar();
+            presentarse = presentarse + "\n\t\t"+child.presentar();
         }
         return presentarse;
     }

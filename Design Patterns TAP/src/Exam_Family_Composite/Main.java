@@ -31,6 +31,12 @@ public class Main
         // Presentar Membres Familia.
         System.out.println(Jay.presentar());
 
-
+        // Part 2 Decoator
+        System.out.println("PART DECORATOR:");
+        Jay = new MemberWithChild("Jay",67);
+        Jay.addChild(Lily);
+        Jay = new ComprarDecorator(Jay);
+        Jay = new NetejarDecorator(Jay);
+        System.out.println(Jay.presentar());
     }
 }
