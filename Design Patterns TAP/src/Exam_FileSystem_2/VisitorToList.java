@@ -4,25 +4,30 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by Alex on 31/10/2015.
+ * Created by alexferrerlopez on 1/11/15.
  */
-public class VisitorToList
+public class VisitorToList extends Visitor
 {
-    // Method for Files.
-    public List<AComponent> toList(File file)
-    {
-        List<AComponent> result = new LinkedList<AComponent>();
-        result.add(file);
-        return result;
+    List<AComponent> result;
+
+    public VisitorToList() {
+        result = new LinkedList<AComponent>();
     }
 
-    // Method for directories
-    public List<AComponent> toList(Directory directory) {
-        VisitorToList vToList = this;
-        List<AComponent> result = new LinkedList<AComponent>();
+    @Override
+    public void visit(File file) {
+        result.add(file);
+    }
+
+    @Override
+    public void visit(Directory directory) {
         result.add(directory);
-        for (AComponent child:directory.getChildren())
-            result.addAll(child.accept_toList(vToList));
+        for(AComponent element: directory.getChildren()){
+            element.accept(this);
+        }
+    }
+
+    public List<AComponent> getResult() {
         return result;
     }
 }

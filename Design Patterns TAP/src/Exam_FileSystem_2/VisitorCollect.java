@@ -4,25 +4,29 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by Alex on 31/10/2015.
- * collect(): It returns a list of String that contains all names of files and directories that are contained in this directory (include subdirectories).
+ * Created by alexferrerlopez on 1/11/15.
  */
-public class VisitorCollect
-{
-    // Method for directory
-    public List<String> collect(Directory directory, VisitorToString vToString) {
-        List<String> result = new LinkedList<String>();
-        result.add(directory.toString(vToString));
-        for (AComponent child:directory.getChildren())
-            result.addAll(child.accept_collect(this,vToString));
-        return result;
+public class VisitorCollect extends Visitor {
+    List<String> result;
+
+    public VisitorCollect() {
+        result = new LinkedList<String>();
     }
 
-    // Method for Files
-    public List<String> collect(File file, VisitorToString vToString) {
-        List<String> result = new LinkedList<String>();
-        result.add(file.toString(vToString));
-        return result;
+    @Override
+    public void visit(File file) {
+        result.add(file.toString());
     }
 
+    @Override
+    public void visit(Directory directory) {
+        result.add(directory.toString());
+        for (AComponent child : directory.getChildren())
+            child.accept(this);
+    }
+
+
+    public List<String> getResult() {
+        return result;
+    }
 }

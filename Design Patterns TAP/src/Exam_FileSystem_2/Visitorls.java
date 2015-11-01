@@ -1,23 +1,17 @@
 package Exam_FileSystem_2;
 
-import Exam_FileSystem.*;
-
 /**
- * Created by Alex on 31/10/2015.
+ * Created by alexferrerlopez on 1/11/15.
  */
-public class Visitorls
-{
+public class VisitorLs extends Visitor {
 
-    // Method ls for Files.
-    public void ls(File file, VisitorToString visitor)
-    {
-        System.out.println(file.toString(visitor));
+    @Override
+    public void visit(File file) {
+        System.out.println(file.toString());
     }
 
-    // Method ls for Directory
-    public void ls(Directory directory, VisitorToString visitor)
-    {
-        Visitorls vLs = this;
-        directory.getChildren().forEach((file -> file.accept_ls(vLs, visitor)));
+    @Override
+    public void visit(Directory directory) {
+        directory.getChildren().forEach((file -> file.ls()));
     }
 }
